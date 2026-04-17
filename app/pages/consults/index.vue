@@ -111,6 +111,15 @@ function confirmDelete(id: string) {
               {{ row.original.status === '대기' ? '상담 시작' : row.original.status === '진행중' ? '상담 계속' : '리포트 보기' }}
             </UButton>
             <UButton
+              size="sm"
+              variant="soft"
+              color="info"
+              icon="i-lucide-file-bar-chart"
+              :to="`/consults/${row.original.id}/report`"
+            >
+              AI 통합 리포트
+            </UButton>
+            <UButton
               v-if="row.original.status === '완료'"
               size="sm"
               variant="soft"

@@ -9,12 +9,16 @@ const router = useRouter()
 const { getById, startConsult, complete, load } = useConsults()
 const { getStudentReports, generateAiAnalysis } = useStudentData()
 
-onMounted(load)
+const loaded = ref(false)
+onMounted(() => {
+  load()
+  loaded.value = true
+})
 
 const consult = computed(() => getById(route.params.id as string))
 
 watchEffect(() => {
-  if (import.meta.client && consult.value === null) {
+  if (loaded.value && consult.value === null) {
     router.replace('/consults')
   }
 })

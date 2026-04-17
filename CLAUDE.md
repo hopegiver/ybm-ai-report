@@ -43,6 +43,13 @@
 ### 공통 variant 값
 - `'solid' | 'outline' | 'soft' | 'ghost' | 'link' | 'subtle'`
 
+## Nuxt 4 파일 기반 라우팅 규칙
+
+### 중첩 라우트 (예: /reports/mobyread + /reports/mobyread/[id])
+- **반드시 디렉토리 방식**을 사용: `mobyread/index.vue` + `mobyread/[id].vue`
+- **절대 금지**: `mobyread.vue`(파일)와 `mobyread/`(디렉토리)를 동시에 존재시키면 라우트 충돌로 하위 경로로 이동 불가
+- 기존 프로젝트의 `ecc-progress/`, `rsa/`, `yept/` 패턴 참고 — 모두 디렉토리 안에 `index.vue` 사용
+
 ## 개발 서버 실행
 ```bash
 ./node_modules/.bin/nuxt dev

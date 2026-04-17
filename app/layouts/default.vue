@@ -29,7 +29,6 @@ watch(isReportActive, (val) => {
 
 const navItems = [
   { label: 'AI 리포트 상담', icon: 'i-lucide-message-circle', to: '/consults' },
-  { label: '사용자', icon: 'i-lucide-users', to: '/users' },
   { label: '설정', icon: 'i-lucide-settings', to: '/settings' }
 ]
 
@@ -37,6 +36,14 @@ function logout() {
   localStorage.removeItem('auth_token')
   router.push('/login')
 }
+
+const userMenuItems = [[
+  {
+    label: '로그아웃',
+    icon: 'i-lucide-log-out',
+    onSelect: logout
+  }
+]]
 
 // 모바일에서 메뉴 클릭 시 사이드바 닫기
 function handleNavClick() {
@@ -206,6 +213,17 @@ function handleNavClick() {
 
         <div class="flex items-center gap-2 ml-auto flex-shrink-0">
           <UColorModeButton />
+          <UDropdownMenu :items="userMenuItems">
+            <UButton variant="ghost" color="neutral" class="flex items-center gap-2 px-2">
+              <UAvatar
+                src="https://api.dicebear.com/7.x/avataaars/svg?seed=admin"
+                alt="Admin"
+                size="sm"
+              />
+              <span class="hidden sm:block text-sm font-medium text-gray-900 dark:text-white">관리자</span>
+              <UIcon name="i-lucide-chevron-down" class="w-4 h-4 text-gray-400" />
+            </UButton>
+          </UDropdownMenu>
         </div>
       </header>
 
