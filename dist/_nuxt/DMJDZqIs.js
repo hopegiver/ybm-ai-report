@@ -1,0 +1,1 @@
+import{aG as o,n as a}from"./BUz4PEk1.js";const i=o(t=>{{const e=localStorage.getItem("auth_token");if(!e&&t.path!=="/login")return a("/login");if(e&&t.path==="/login")return a("/")}});export{i as default};
